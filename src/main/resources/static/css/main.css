@@ -1,0 +1,73 @@
+body {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	color: #333;
+	line-height: 25px;
+}
+
+#mainContainer {
+	padding-top:25px;
+}
+
+.border-radias {
+	border-radius: 5px;
+}
+
+#userCountDiv {
+	height: 100px;
+	width: 200px;
+	border: 1px solid gray;
+	float:left;
+}
+
+h1 {
+	font-size: 26px;
+	line-height: 20px;
+} /* For IE 7 */
+
+a {
+	text-decoration: none;
+	color: #3D69B6;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+#entityEditDiv {
+	max-width:450px;
+}
+
+#entityGridDiv {
+	width:100%;
+}
+
+
+/* Override boostrap */
+
+#entityEditDiv .control-label {
+    float: left;
+    width: 140px;
+    
+}
+
+#entityEditDiv label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333333;
+    padding-right:20px;
+}
+
+#entityEditDiv .form-control, .form-control-static  {
+	display:inline-block;
+	width:200px;
+	float:left;
+}
+
+#entityEditDiv .form-control-static  {
+	display:inline-block;
+	width:200px;
+	float:left;
+	text-align:left;
+}

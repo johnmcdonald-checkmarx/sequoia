@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+	<head>
+		<th:block th:include="includes/css-inc :: css"></th:block>
+		<th:block th:include="includes/js-inc :: js"></th:block>
+	</head>
+	<body>
+		<div class="container">
+			<th:block th:include="includes/header :: header"></th:block>
+			<center>
+				<h1>User List</h1>
+				<div id="searchDiv">
+				    need search box
+				</div>
+				
+				<table class="table table-hover table-condensed">
+					<thead>
+						<tr>
+							<th>User ID</th>
+							<th>Name</th>
+							<th>username</th>
+							<th>address</th>
+							<th>created</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tr th:each="user : ${userList}">
+						<td th:text="${user.id}">1234</td>
+						<td th:text="${user.firstName}">Name</td>
+						<td th:text="${user.username}">username</td>
+						<td th:text="${user.address}">address</td>
+						<td th:text="${{user.created}}">created</td>
+						<td><a href="#">EDIT</a> | <a href="#">DELETE</a></td>
+					</tr>
+				</table>
+			</center>
+		</div>
+	</body>
+</html>

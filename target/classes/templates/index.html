@@ -1,0 +1,17 @@
+<html>
+<head>
+	<th:block th:include="includes/css-inc :: css"></th:block>
+	<th:block th:include="includes/js-inc :: js"></th:block>
+    <title>Hello Spring Boot!</title>
+</head>
+<body>
+	<div class="container">
+		<th:block th:include="includes/header :: header"></th:block>
+		<div id="userCountDiv" class="container border-radias" >
+			<div class="row" >
+  				<div class="col-md-12">User Count: <span th:text="${userCount}">fucking 0</span></div>
+  			</div>	
+		</div>
+	</div>	
+</body>
+</html>
