@@ -32,7 +32,7 @@
 						<td th:text="${user.username}">username</td>
 						<td th:text="${user.address}">address</td>
 						<td th:text="${{user.created}}">created</td>
-						<td><a href="#">EDIT</a> | <a href="#">DELETE</a></td>
+						<td><a th:href="|/user/edit/${user.id}|">EDIT</a> | <a href="#">DELETE</a></td>
 					</tr>
 				</table>
 			</center>

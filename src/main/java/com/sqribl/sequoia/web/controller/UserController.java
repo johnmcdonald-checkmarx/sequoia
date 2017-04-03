@@ -5,8 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.freeform.core.model.User;
 import com.freeform.core.service.EntityService;
@@ -14,41 +17,59 @@ import com.freeform.core.service.EntityService;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+	
+	private static final String _VIEW = "/userView";
+	private static final String _EDIT = "/userEdit";
+	private static final String _LIST = "/userList1";
+	
 	@Autowired
 	@Lazy
 	private EntityService<User> userService;
 	
 	@RequestMapping("/list")
-    String getListUser() {
-		System.out.println("requst: /user/list");
-        return "userlist";
+    String getListUser(Model model) {
+		System.out.println("requst: list");
+		model.addAttribute("userList",userService.findAll());
+        return _LIST;
     }
 	
-	@ModelAttribute("userList")
-	public List<User> populateSeedStarters() {
-		System.out.println("model:userList");
-	    return this.userService.findAll();
-	}
-	
-	@GetMapping
-    public String newUser(final User user) {
-		System.out.println("model:newUser");
-        return "user";
+	@GetMapping("/add")
+    public String add(Model model) {
+		System.out.println("request:add");
+		model.addAttribute(new User());
+		return _EDIT;
     }
-
-	@ModelAttribute("user")
-	public User getUser(Long id) {
-		System.out.println("getUser");
-		if( id == null)
-			return new User();
-		else
-			return this.userService.findById(id);
-	}
 	
-	/*
-	@ModelAttribute("/user/{id}")
-	public User new(Long id) {
-		System.out.println("getUserObjectThingy");
-	    return this.userService.findById(id);
-	}*/
+	@GetMapping("/edit/{userId}")
+    public String edit(@PathVariable Long userId, Model model) {
+		System.out.println("request:edit");
+		User user = this.userService.findById(userId);
+		model.addAttribute(user);
+        return _EDIT;
+    }
+	
+	@GetMapping("/view/{userId}")
+    public String view(@PathVariable Long userId, Model model) {
+		System.out.println("request:view");
+		User user = this.userService.findById(userId);
+		model.addAttribute(user);
+        return _VIEW;
+    }
+	
+	@PostMapping("/save")
+    public String save(@ModelAttribute User user) {
+		System.out.println("post:save:"+user.getId());
+		try {
+			if( user.getId() != null ) {
+				System.out.println("updating");
+				userService.update(user);
+			} else {
+				System.out.println("creating");
+				userService.create(user);
+			}	
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		return "redirect:/user/"+_VIEW+"/"+user.getId();
+    }
 }

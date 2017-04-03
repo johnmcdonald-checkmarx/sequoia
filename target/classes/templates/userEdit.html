@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>	 
+	<head>
+		<th:block th:include="includes/css-inc :: css"></th:block>
+		<th:block th:include="includes/js-inc :: js"></th:block>
+	</head>
+	<body>
+		<div class="container">
+			<th:block th:include="includes/header :: header"></th:block>
+			<h1>User Edit</h1>
+			
+				
+				 		
+		            <form th:action="@{/user/save}" th:object="${user}" method="post" class="well well-small">
+		            	<!-- <t:errors/> -->
+		            	<input type="hidden" th:value="${user.id}" name="id"/>
+		            	<input type="hidden" th:value="${user.version}" name="version"/>
+		            	<div class="form-group">
+		            		<label for="firstName">First Name</label>
+		                	<input id="firstName" type="text" th:field="*{firstName}" class="form-control"/>
+		                </div> 
+		                <div class="form-group">
+		            		<label for="lastName">Last Name</label>
+		                	<input id="lastName" type="text" th:field="*{lastName}" class="form-control"/>
+		                </div>	
+		                <div class="form-group">
+		            		<label for="address">Address</label>
+		                	<input id="address" type="text" th:field="*{address}" class="form-control"/>
+		                </div>	
+		                <div class="form-group">
+		            		<label for="address2">First Name</label>
+		                	<input id="address2" type="text" th:field="*{address2}" class="form-control"/>
+		                </div>	
+		                <div class="form-group">
+		            		<label for="city">First Name</label>
+		                	<input id="city" type="text" th:field="*{city}" class="form-control"/>
+		                </div>	
+		                <div class="form-group">
+		            		<label for="state">First Name</label>
+		                	<input id="state" type="text" th:field="*{state}" class="form-control"/>
+		                </div>	
+		                <div class="form-group">
+		            		<label for="postCode">First Name</label>
+		                	<input id="postCode" type="text" th:field="*{postCode}" class="form-control"/>
+		                </div>	
+		                <div class="form-group">
+		            		<label for="email">First Name</label>
+		                	<input id="email" type="text" th:field="*{email}" class="form-control"/>
+		                </div>	
+		                <div class="form-group">
+		            		<label for="username">First Name</label>
+		                	<input id="username" type="text" th:field="*{username}" class="form-control"/>
+		                </div>	
+		                <div class="form-group">
+		            		<label for="password">First Name</label>
+				        	<input id="password" type="password" th:field="*{password}" class="form-control"/>
+				        </div>	
+				         
+				        <!-- 
+		                <div class="panel panel-default">
+  							<div class="panel-heading">
+  								<h3 class="panel-title"><a href="#demo" class="btn btn-info" data-toggle="collapse">Audit Data <span class="caret"/></a></h3>
+  							</div>
+	                		<div id="demo" class="panel-body collapse">
+	                		
+	                			<div class="form-group">
+									<label class="control-label">${message:createdBy-label}</label>
+								    <div class="form-control-static">${user.createdBy}</div>
+								</div>
+				                
+				                <x:temporaldatefield t:id="created" value="user?.created" t:mixins="formgroup"/>
+				                
+				             
+	                			<div class="form-group">
+									<label class="control-label">${message:createdBy-label}</label>
+								    <div class="form-control-static">${user.createdBy}</div>
+								</div>
+								<x:temporaldatefield t:id="updated" value="user?.updated" disabled="true"  t:mixins="formgroup"/>
+				                <t:hidden t:id="version" value="user.version"/>
+				            </div>
+					    </div>
+					     -->   
+			            
+		                <button type="submit" class="btn btn-primary">Submit</button>
+		                
+		            </form>
+			 	
+		</div>
+			 	
+					
+	</body>
+</html>
